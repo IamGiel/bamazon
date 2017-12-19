@@ -1,0 +1,19 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "an amazon-like bid/post application (MySQL)",
+  "main": "bamazon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IamGiel/bamazon.git"
+  },
+  "author": "Gel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IamGiel/bamazon/issues"
+  },
+  "homepage": "https://github.com/IamGiel/bamazon#readme"
+}

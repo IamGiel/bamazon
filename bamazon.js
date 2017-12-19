@@ -1,5 +1,6 @@
 //BAMAZON APP (C,R,U,D)
 var mysql = require('mysql');
+var Customer = require('./bamazonCustomer');
 var connection = mysql.createConnection({
 	host:"localhost",
 	port:"3306",
@@ -8,28 +9,37 @@ var connection = mysql.createConnection({
 	database:"bamazonDB"
 });
 
+
 connection.connect(function(err){
 	if (err) throw err;
-	console.log("connection as id " + connection.threadId);
+	console.log("connection as id " + connection.threadId+"\n\n\n");
 
 	connection.query("SELECT * FROM products", function(err, res){
 	if (err) throw err;
 	// console.log(res);
+  console.log("WELCOME, THANKS FOR CHOOSING BAMAZON!");
   	for (var i = 0; i < res.length; i++) {
-      console.log("======ITEM: "+ res[i].item_id +"=======");
+      console.log("======~~~~~~~~~~ ITEM ID:"+ res[i].item_id +" ~~~~~~~~~~=======\n");
   		console.log("PRODUCT NAME: " +res[i].product_name);
-  		console.log("DEPT: " +res[i].department_name);
-  		console.log("PRICE: " +res[i].price);
-      console.log("IN STOCK: " +res[i].stock_quantity);
+  		console.log("DEPARTMENT:   " +res[i].department_name);
+  		console.log("PRICE:        " +res[i].price);
+      console.log("IN STOCK:     " +res[i].stock_quantity+" left!" +"\n\n\n");
+
   	}
+    //use constructor from bamazonCustomer.js to prompt user for selection
+    var shopper = new Customer();
+    shopper.prompt(); 
+
 	})
-	createItem();
+  
+	// createItem();
 	// updateItem();
 	// deleteItem();
 	// readItem();
 	// connection.end();
 
 })
+  
 
 function createItem() {
   console.log("Inserting a new item...\n");
@@ -60,10 +70,10 @@ function updateItem() {
     "UPDATE products SET ? WHERE ?",
     [
       {
-        genre: "metal"
+        product_name: "something"
       },
       {
-        title: "Rocky Road"
+        price: "something"
       }
     ],
     function(err, res) {
@@ -104,9 +114,11 @@ function readItem() {
     if (err) throw err;
     // Log all results of the SELECT statement
     // console.log(res);
+
     connection.end();
   });
 }
+
 
 
 //keep in mind:
