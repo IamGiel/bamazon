@@ -1,33 +1,11 @@
-function resolveLater(resolve, reject) {
-  setTimeout(function () {
-    resolve(10);
-  }, 1000);
-}
-function rejectLater(resolve, reject) {
-  setTimeout(function () {
-    reject(20);
-  }, 1000);
-}
+DEBUGGING WORK:
 
-var p1 = Promise.resolve('foo');
-var p2 = p1.then(function() {
-  // Return promise here, that will be resolved to 10 after 1 second
-  return new Promise(resolveLater);
-});
-p2.then(function(v) {
-  console.log('resolved', v);  // "resolved", 10
-}, function(e) {
-  // not called
-  console.log('rejected', e);
-});
-
-var p3 = p1.then(function() {
-  // Return promise here, that will be rejected with 20 after 1 second
-  return new Promise(rejectLater);
-});
-p3.then(function(v) {
-  // not called
-  console.log('resolved', v);
-}, function(e) {
-  console.log('rejected', e); // "rejected", 20
-});
+1. After, purchase, how to exit the command line and restart?
+2. WHEN I TRY TO RESELECT ANOTHER ITEM: Cannot read property 'length' of undefined - 
+3. After, prompting user to select a lesser quantity of items 
+    -- the function(){} that inquires two question is successfull
+    -- BUT, after user makes selections, app breaks and DISPLAYS:
+    
+    "ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'field list'"
+        at Query.Sequence._packetToError
+4.  

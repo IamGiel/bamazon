@@ -26,12 +26,13 @@ connection.connect(function(err){
       console.log("IN STOCK:     " +res[i].stock_quantity+" left!" +"\n\n\n");
 
   	}
-    //use constructor from bamazonCustomer.js to prompt user for selection
+    // use constructor from bamazonCustomer.js to prompt user for selection
     var shopper = new Customer();
     shopper.prompt(); 
 
 	})
-  
+  //===UNCOMMENT FUNCTIONS TO ACTIVATE CODES BELOW===//
+
 	// createItem();
 	// updateItem();
 	// deleteItem();
@@ -39,7 +40,7 @@ connection.connect(function(err){
 	// connection.end();
 
 })
-  
+  //===================================== USE CODES BELOW TO MANIPULATE DATABASE =====================================
 
 function createItem() {
   console.log("Inserting a new item...\n");
@@ -64,28 +65,36 @@ function createItem() {
   console.log(query.sql);
 }
 
+//THIS HAS FOR LOOP FOR INCREMENTING THE ITEM_ID
+var incr = 0;
 function updateItem() {
   console.log("Updating ...\n");
-  var query = connection.query(
-    "UPDATE products SET ? WHERE ?",
-    [
-      {
-        product_name: "something"
-      },
-      {
-        price: "something"
-      }
-    ],
-    function(err, res) {
-      if (err) throw err;
-      console.log(res + " items updated!\n");
-      // Call deleteProduct AFTER the UPDATE completes
-      // deleteProduct();
-    }
-  );
+  //ADJUST LOOP
+    if(incr <= 10) {
+      var query = connection.query(
+         "UPDATE products SET ? WHERE ?",
+         [{
+            stock_quantity: 25
+          }, 
+          {
+            item_id: incr
+         }], 
+         function(err, res) { 
 
-  // logs the actual query being run
-  console.log(query.sql);
+           if (err) throw err;
+              
+              console.log(res.affectedRows + " item for each " + incr + " rows updated!\n");
+              // Call deleteProduct AFTER the UPDATE completes
+              // deleteProduct();
+            }
+      );
+      //INCREMENT LOOP
+      incr++;
+      updateItem();
+      // logs the actual query being run
+      console.log(query.sql);
+    }
+  
 }
 
 function deleteItem() {
