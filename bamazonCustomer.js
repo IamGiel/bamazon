@@ -64,8 +64,9 @@ function Customer(id, qty) {
 		                  console.log("IN STOCK:     " +res[i].stock_quantity+"\n\n\n");
 
 		                  resAmt.push(res[i].stock_quantity);
-		                  console.log("THIS IS RESAMT: "+resAmt);
+		                  // console.log("THIS IS RESAMT: "+resAmt);
 
+		                  //UPDATE_ITEM INSIDE READ_ITEM FUNCTION
 		                  console.log("Updating ...\n");
 		                  
 		                  	connection.query("UPDATE products SET ? WHERE ?", 
@@ -91,35 +92,3 @@ function Customer(id, qty) {
 
 
 module.exports = Customer;
-
-// inquirer.prompt([
-//     {
-//       name: “item”,
-//       type: “input”,
-//       message: “Please enter the Item# you would like to buy”,
-      
-//    },
-//   {
-//     name: “qty”,
-//     type: “input”,
-//     message: “Please enter the number of items you would like to buy”
-//   }
-//       ]).then(function(answers) {
-//         queryItem();
-
-//        //function to display the selected list items
-//       function queryItem() {
-//     var query = connection.query(“SELECT * FROM products WHERE item_id=?“, [answers.item], function(err, res){
-//             if (err) throw err;
-//             for (var i =0; i < res.length; i++){
-//               //console.log(res);
-//               console.log(“\n” + “You have selected Item #: ” + res[i].item_id + ” | ” + ” Product: ” + res[i].product_name + ” with a quantity of ” + answers.qty + ” items.“+ “\n”);
-//               console.log(“\n” + “Item #: ” +res[i].item_id + ” | ” + “Product: ” + res[i].product_name + ” | ” + “Depatment: ” +
-//                   res[i].department_name + ” | ” + “Price: ” + res[i].price + ” | ” + “Quantity: ” + answers.qty);
-//               console.log(“===============================================================================================================================“);
-            
-              
-//                                }
-//                         })
-//                   }
-//             })	
