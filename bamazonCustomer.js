@@ -72,59 +72,59 @@ function Customer(id, qty) {
 
 
 			    } else
-				  if(productID <= 10){
-				    // Log all results of the SELECT statement
-				    for (var i = 0; i < res.length; i++) {
-		                resAmt.push(res[i].stock_quantity);
-		                itemBought.push(res[i].product_name);
-		                listItems.push(res[i].product_name);
-		                totalPrice.push(res[i].price);
-		                // console.log("THIS IS RESAMT: "+resAmt);
-		                  
-		                if(prodTotal > resAmt){
-		                	// 
-		                   console.log("YOU REQUESTED " + prodTotal + " ITEMS");
-		                   console.log("WE HAVE " + resAmt + " ITEMS LEFT");
-		                   console.log("Oops!, we will get more of that item soon");
-		                    _this.prompt();
-		                }else
-						if(prodTotal <= resAmt){
-		                    //UPDATE_ITEM INSIDE READ_ITEM FUNCTION
-		                    connection.query("UPDATE products SET ? WHERE ?", 
-		                        [{
-		                          stock_quantity: resAmt - prodTotal
-		                        }, 
-		                        {
-		                          item_id: productID
-		                        }], function(err, res) {
-		                         // console.log("res");
-		                         console.log("Updating database stock quantity...\n");
-		                         if (err) throw err;
-		                         
-		                         // console.log(res);
-		                         console.log(prodTotal + " " + itemBought + " items in your shopping cart!\n");
-		                         
-		                         
-		                            //REPEAT PROCESS OR EXIT
-		                            inquirer.prompt(morePurchase).then(function(user){
-		                      	  	   if (err) throw err;
-		                      	  	   console.log(user.id);
-		                      	  	   if(user.id == "Maybe later..."){
-		                      	  
-		                      	  	 	 console.log(listItems.join(' '), " items in your shopping cart!\n");
-		                      	  	 	 console.log("\n\n\nT'was Great to help with your shopping needs!");
-		                      	  	 	
-		                      	  	   } 
-		                      	  	     else if(user.id == "See more cool stuff!..."){
-		                      	  	     	re_readItem();
-		                      	  	     	 // _this.prompt();
-		                      	  	  	    
-		                      	  	  }
-		                      	  	});
-		                      	});
-		                  }
-	    			  }
-				   } 
+				     if(productID <= 10){
+				      // Log all results of the SELECT statement
+				      for (var i = 0; i < res.length; i++) {
+		                  resAmt.push(res[i].stock_quantity);
+		                  itemBought.push(res[i].product_name);
+		                  listItems.push(res[i].product_name);
+		                  totalPrice.push(res[i].price);
+		                  // console.log("THIS IS RESAMT: "+resAmt);
+		                    
+		                  if(prodTotal > resAmt){
+		                  	// 
+		                     console.log("YOU REQUESTED " + prodTotal + " ITEMS");
+		                     console.log("WE HAVE " + resAmt + " ITEMS LEFT");
+		                     console.log("Oops!, we will get more of that item soon");
+		                      _this.prompt();
+		                  }else
+						      if(prodTotal <= resAmt){
+		                         //UPDATE_ITEM INSIDE READ_ITEM FUNCTION
+		                         connection.query("UPDATE products SET ? WHERE ?", 
+		                         [{
+		                           stock_quantity: resAmt - prodTotal
+		                         }, 
+		                         {
+		                         item_id: productID
+		                         }], function(err, res) {
+		                             // console.log("res");
+		                             console.log("Updating database stock quantity...\n");
+		                             if (err) throw err;
+		                             
+		                             // console.log(res);
+		                             console.log(prodTotal + " " + itemBought + " items in your shopping cart!\n");
+		                             
+		                             
+		                                //REPEAT PROCESS OR EXIT
+		                                inquirer.prompt(morePurchase).then(function(user){
+		                          	  	   if (err) throw err;
+		                          	  	   console.log(user.id);
+		                          	  	   if(user.id == "Maybe later..."){
+		                          	  
+		                          	  	 	 console.log(listItems.join(' '), " items in your shopping cart!\n");
+		                          	  	 	 console.log("\n\n\nT'was Great to help with your shopping needs!");
+		                          	  	 	
+		                          	  	   } 
+		                          	  	     else if(user.id == "See more cool stuff!..."){
+		                          	  	     	re_readItem();
+		                          	  	     	 // _this.prompt();
+		                          	  	  	    
+		                          	  	  }
+		                          	  	});
+		                          	});
+		                      }
+	    				 }
+				     } 
 			   });
 			}//end function readItem
 		});
