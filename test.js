@@ -8,4 +8,5 @@ DEBUGGING WORK:
     
     "ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'field list'"
         at Query.Sequence._packetToError
-4.  
+
+//Keeping this here for reference  
