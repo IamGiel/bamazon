@@ -4,10 +4,15 @@ var connection = require('./bamazon')
 var prompt = require('prompt');
 var fs = require('fs');
 var mysql = require('mysql');
+
+//arrays to store data and called inside multiple functions (empty array and re-fill)
 var payAmt = [];
 var listItems = [];
 var sum;
 var resAmt = [];
+var itemBought = [];
+var totalPrice = [];
+var itemPrice =  [];
 
 
 var connection = mysql.createConnection({
@@ -59,9 +64,10 @@ function Customer(id, qty) {
 			
 			//READ ITEM
 			function readItem() {
-				var itemBought = [];
-				var totalPrice = [];
-				var itemPrice =  [];
+				itemBought = [];
+				totalPrice = [];
+				itemPrice =  [];
+				listItems = [];
 				resAmt = [];
 				
 			    // console.log("Selecting product...\n");
@@ -88,11 +94,6 @@ function Customer(id, qty) {
 		                  userFee = prodTotal * itemPrice;
 		                  payAmt.push(userFee);
 
-		                  // fs.writeFile("blanks.txt", stackOv, (err) => {
-		                  // 	if (err) throw err;
-		                  // 	console.log("LOGGING THIS INFO TO BLANK TEXT: \n\n\n", resAmt);
-		                  // });
-
 		                  sum = payAmt.reduce((a, b) => a + b, 0);
 		                  intProdTotal = parseInt(prodTotal); //console.log("intProdTotal", intProdTotal);
 		                  intResAmt = parseInt(resAmt); //console.log("intResAmt", intResAmt);
@@ -110,7 +111,13 @@ function Customer(id, qty) {
 		                       }], function(err, res) {
 		                            if (err) throw err;
 		                              //appendFile to save user selection
-		                               fs.writeFile("blanks.txt", "\n\n\n=========" + prodTotal +  " ORDERS OF: \n" + listItems + " TOTAL PRICE: $ " + itemPrice + "\nTotal Purchase Price: $ " + userFee + "\n\n\n", function (error) {
+
+
+		                               fs.writeFile("blanks.txt", "\n\n\n=========" + prodTotal +  " ORDERS OF: \n" + listItems + " >>> TOTAL PRICE: $ " + itemPrice + "\nTotal Purchase Price: $ " + userFee + "\n\n\n", function (error) {
+		                                  
+		                                  console.log("saved!");
+		                               });
+		                               fs.appendFile("orders.txt", "\n\n\n=========" + prodTotal +  " ORDERS OF: \n" + listItems + " >>> TOTAL PRICE: $ " + itemPrice + "\nTotal Purchase Price: $ " + userFee + "\n\n\n", function (error) {
 		                                  
 		                                  console.log("saved!");
 		                               });
@@ -135,12 +142,22 @@ function repeatProcess() {
    //REPEAT PROCESS OR EXIT
    inquirer.prompt(morePurchase).then(function(user){
 	   if(user.id == "Maybe later..."){
-	   	   fs.readFile("blanks.txt", 'utf8' ,function(error, data) {
-	   	  	 if (error) throw error;
-	   	  	 console.log(data);
-	   	  	 console.log("YOUR FINAL BILL: "+ sum);
-	   	  	 console.log("\n\n\n=================T'was Great to help with your shopping needs!=================");
+	   	   // fs.readFile("blanks.txt", 'utf8' ,function(error, data) {
+	   	   // 	console.log("======================== YOUR CHECKOUT LIST ========================");
+	   	  	//  if (error) throw error;
+	   	  	//  console.log(data);
+	   	  	//  console.log("YOUR FINAL BILL: " + sum);
+	   	  	//  console.log("\n\n\n=================T'was Great to help with your shopping needs!=================");
+	       // });
+	       fs.readFile("orders.txt", 'utf8' ,function(error, data) {
+	       	console.log("======================== HISTORY OF PURCHASES WITH BAMAZON ========================");
+	      	 if (error) throw error;
+	      	 console.log(data);
+	      	 console.log("YOUR FINAL BILL, FOR THIS RECENT PURCHASE: $ " + sum);
+	      	 console.log("\n\n\n=================T'was Great to help with your shopping needs!=================");
 	       });
+	       //call this empty array here to clear it up for next order
+	       payAmt = [];
 	    }else if(user.id == "See more cool stuff!..."){
 	     	re_readItem();
 	     	 // _this.prompt();
