@@ -1,7 +1,26 @@
 # Bam! azon
 ## Shop with bamazon (MySQL ran application)
 
+### First Page - List Items Available by ID
+![First Display](https://raw.githubusercontent.com/IamGiel/bamazon/master/images/first%20display.png)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/q0u5uPL33Tg?rel=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+### At the bottom is the first prompt (package used: ```npm install inquirer```)
+![First Display](https://raw.githubusercontent.com/IamGiel/bamazon/master/images/first%20prompt.png)
 
+### Second Prompt
+![First Display](https://raw.githubusercontent.com/IamGiel/bamazon/master/images/second%20prompt.png)
+
+### Single Purchase
+![First Display](https://raw.githubusercontent.com/IamGiel/bamazon/master/images/single%20purchase.png)
+
+### Multiple Purchase ```fs package``` (write, append and read)
+![First Display](https://raw.githubusercontent.com/IamGiel/bamazon/master/images/multiple%20purchase.png)
+
+### Not Enough Stock - checks user request for amount of orders
+![First Display](https://raw.githubusercontent.com/IamGiel/bamazon/master/images/notEnough.png)
+
+#See this in action (video demos):
+### - [Multi Purchase](https://youtu.be/q0u5uPL33Tg)
+### - [Over Purchase](https://youtu.be/G5wBQ0PMWkU)
+### - [Single/simple purchase](https://youtu.be/iaeUgSu-rFs)
 
