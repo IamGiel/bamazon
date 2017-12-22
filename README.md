@@ -1,7 +1,9 @@
 # Bam! azon
 ## Shop with bamazon (MySQL ran application) - 
 
-###<center>~~ video demo down below ~~</center>
+<center>~~ video demo down below ~~</center>
+
+
 TO RUN PROGRAM: ````node bamazon.js```` 
 
 ### First Page - List Items Available by ID
