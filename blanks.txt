@@ -2,7 +2,7 @@
 
 
 =========2 ORDERS OF: 
-ECHO plus >>> TOTAL PRICE: $ 80
-Total Purchase Price: $ 160
+Mini Mac >>> TOTAL PRICE: $ 689
+Total Purchase Price: $ 1378
 
 

@@ -124,7 +124,7 @@ function readItem() {
     // Log all results of the SELECT statement
     // console.log(res);
 
-    connection.end();
+    // connection.end();
   });
 }
 
