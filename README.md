@@ -6,6 +6,13 @@
 
 TO RUN PROGRAM: ````node bamazon.js```` 
 
+<h2>APP DEMOS:</h2>
+
+![First Display](https://raw.githubusercontent.com/IamGiel/bamazon/master/gif/demoBAMAZON.gif)
+
+<hr><br>
+<h3>SNAPSHOTS</h3>
+
 ### First Page - List Items Available by ID
 ![First Display](https://raw.githubusercontent.com/IamGiel/bamazon/master/images/first%20display.png)
 
