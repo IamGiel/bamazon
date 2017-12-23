@@ -24,7 +24,7 @@ TO RUN PROGRAM: ````node bamazon.js````
 ### Not Enough Stock - checks user request for amount of orders
 ![First Display](https://raw.githubusercontent.com/IamGiel/bamazon/master/images/notEnough.png)
 
-#See this in action (video demos):
+# See this in action (video demos):
 ### - [Multi Purchase](https://youtu.be/q0u5uPL33Tg)
 ### - [Over Purchase](https://youtu.be/G5wBQ0PMWkU)
 ### - [Single/simple purchase](https://youtu.be/iaeUgSu-rFs)
