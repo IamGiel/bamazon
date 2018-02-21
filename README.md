@@ -6,9 +6,13 @@
 
 TO RUN PROGRAM: 
 ````1. Clone the repo````
+
 ````2. npm install modules - `npm install` ````
+
 ````3. Type: `node bamazon.js`  ````
+
 ````4. Thats it! Bam!```` 
+
 
 <h2>APP DEMOS:</h2>
 
